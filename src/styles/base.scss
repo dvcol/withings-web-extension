@@ -1,0 +1,19 @@
+// import pico theme
+@import '@picocss/pico/scss/themes/default';
+
+// import pico components
+@import '@picocss/pico/scss/content/button';
+
+:root {
+  // withings colors
+  --withings-green: #40fd48;
+  --withings-blue: #008eec;
+
+  // pico colors
+  --pico-primary: var(--withings-green);
+  --pico-secondary: var(--withings-blue);
+
+  // custom colors
+  --color-primary: var(--withings-green);
+  --color-secondary: var(--withings-blue);
+}

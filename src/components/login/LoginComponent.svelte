@@ -28,7 +28,7 @@
     <img src={withingLogoUrl} alt=" withings logo" />
   </div>
   <div class="title">{i18n('app_name', 'global')}</div>
-  <div>{i18n('title')}</div>
+  <button class="button">Button</button>
 </div>
 
 <style lang="scss">
@@ -56,5 +56,13 @@
       min-width: 128px;
       max-width: 25%;
     }
+  }
+
+  .button {
+    border-radius: 1rem;
+    height: 2.125rem;
+    padding: 0 1rem;
+    background-color: var(--color-secondary);
+    border: none;
   }
 </style>
