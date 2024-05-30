@@ -1,3 +1,4 @@
+import { Config } from '@dvcol/withings-http-client/config';
 import fs from 'fs-extra';
 
 import pkg from '../package.json';
@@ -5,6 +6,15 @@ import pkg from '../package.json';
 import { getDirName, isDev, port, resolveParent } from './utils';
 
 import type { Manifest } from 'webextension-polyfill';
+
+export const Endpoints = {
+  withings: {
+    Account: Config.endpoint.account,
+    Api: Config.endpoint.api,
+  },
+  dvcol: 'https://dvcol.github.io',
+  local: 'http://localhost:3000',
+} as const;
 
 export const manifest: Manifest.WebExtensionManifest = {
   manifest_version: 3,
@@ -31,8 +41,13 @@ export const manifest: Manifest.WebExtensionManifest = {
     type: 'module',
   },
   permissions: ['storage', 'tabs', 'contextMenus'],
-  web_accessible_resources: [],
-  host_permissions: [],
+  web_accessible_resources: [
+    {
+      resources: ['/views/options/index.html'],
+      matches: [`${Endpoints.withings.Account}/*`, `${Endpoints.withings.Api}/*`, `${Endpoints.dvcol}/*`, `${Endpoints.local}/*`],
+    },
+  ],
+  host_permissions: [`${Endpoints.withings.Account}/*`, `${Endpoints.withings.Api}/*`],
   content_security_policy: {
     // Adds localhost for vite hot reload
     extension_pages: isDev
