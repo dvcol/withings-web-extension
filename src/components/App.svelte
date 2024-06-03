@@ -1,14 +1,12 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import Router from 'svelte-spa-router';
 
+  import ProgressComponent from '~/components/progress/ProgressComponent.svelte';
   import { routeDefinition } from '~/router/routes';
+  import { WithingsService } from '~/service/withings.service';
 
   import '~/styles/base.scss';
-  import ProgressComponent from '~/components/progress/ProgressComponent.svelte';
-
-  import { onMount } from 'svelte';
-
-  import { WithingsService } from '~/service/withings.service';
 
   onMount(() => {
     (window as any).WithingsService = WithingsService;
