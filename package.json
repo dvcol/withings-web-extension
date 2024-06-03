@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@dvcol/base-http-client": "^1.2.0",
-    "@dvcol/web-extension-utils": "^2.3.4",
+    "@dvcol/web-extension-utils": "^2.4.0",
     "@dvcol/withings-http-client": "../withings-http-client",
     "@picocss/pico": "^2.0.6"
   },

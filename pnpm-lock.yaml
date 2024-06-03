@@ -12,8 +12,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       '@dvcol/web-extension-utils':
-        specifier: ^2.3.4
-        version: 2.3.4
+        specifier: ^2.4.0
+        version: 2.4.0
       '@dvcol/withings-http-client':
         specifier: ../withings-http-client
         version: link:../withings-http-client
@@ -487,8 +487,8 @@ packages:
       postcss-scss:
         optional: true
 
-  '@dvcol/web-extension-utils@2.3.4':
-    resolution: {integrity: sha512-u/A2szxGRhvX4JHrQ8K1hklISU1KqDD8bIjvCjhIGOVq04fSudscUccM6yzVQ3fGOa3ycFBiqLh4obJ58FL0hA==}
+  '@dvcol/web-extension-utils@2.4.0':
+    resolution: {integrity: sha512-cQAinskNAZf91usO8K/lvUuuJUoi9q3RKLmmJKrX/8cHz2olKP+Yv96rV73pgO3Qro8yvyZv4bqT2Hg0ndhVSQ==}
     engines: {node: '>=16', pnpm: '>= 6.32.0'}
 
   '@esbuild/aix-ppc64@0.20.2':
@@ -5166,7 +5166,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@dvcol/web-extension-utils@2.3.4':
+  '@dvcol/web-extension-utils@2.4.0':
     dependencies:
       fast-glob: 3.3.2
       fs-extra: 11.2.0

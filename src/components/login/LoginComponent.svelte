@@ -3,6 +3,7 @@
 
   import withingLogoUrl from '~/assets/withings_1080x1080.png';
   import { WithingsService } from '~/service/withings.service';
+  import { WithingsSettings } from '~/settings/withings.settings';
   import { useI18n } from '~/utils/i18n.utils';
 
   const i18n = useI18n('login');
@@ -13,14 +14,16 @@
     if (!window.location.search?.length) return;
     params = new URLSearchParams(window.location.search);
     console.info('params', params);
-
-    if (params.has('code')) {
-      WithingsService.client.exchangeCode({
-        code: params.get('code'),
-        state: params.get('state'),
-      });
-    }
   });
+
+  const redirect = WithingsSettings.redirect_uri;
+  const onAuthorize = () => {
+    return WithingsService.approve({ redirect_uri: redirect });
+  };
+
+  const onLogin = () => {
+    WithingsService.authorize(params.get('code'), params.get('state'));
+  };
 </script>
 
 <div class="text">
@@ -28,7 +31,14 @@
     <img src={withingLogoUrl} alt=" withings logo" />
   </div>
   <div class="title">{i18n('app_name', 'global')}</div>
-  <button class="button">Button</button>
+  {#if !params?.has('code')}
+    <input class="redirect" type="text" value={redirect} />
+    <button class="button" on:click={onAuthorize}>Authorize</button>
+  {:else}
+    <div>Code: {params?.get('code')}</div>
+    <div>State: {params?.get('state')}</div>
+    <button class="button" on:click={onLogin}>Login</button>
+  {/if}
 </div>
 
 <style lang="scss">
@@ -42,6 +52,11 @@
     height: 100%;
 
     .title {
+      margin-bottom: 2rem;
+    }
+
+    .redirect {
+      max-width: 80%;
       margin-bottom: 2rem;
     }
   }
