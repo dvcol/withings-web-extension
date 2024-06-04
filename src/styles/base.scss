@@ -4,11 +4,16 @@
 // import pico components
 @import '@picocss/pico/scss/content/button';
 @import '@picocss/pico/scss/forms/basics';
+@import '@picocss/pico/scss/components/nav';
+@import '@picocss/pico/scss/content/link';
+@import '@picocss/pico/scss/content/table';
 
 :root {
   // withings colors
   --withings-green: #40fd48;
   --withings-blue: #008eec;
+  --text-color: white;
+  --text-color-darker: #ababab;
 
   // pico colors
   --pico-primary: var(--withings-green);

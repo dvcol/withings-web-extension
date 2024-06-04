@@ -1,0 +1,22 @@
+{
+  "subscriptions__appli": {
+    "message": "Appli",
+    "description": "Table header for the appli column in the subscriptions table"
+  },
+  "subscriptions__callback": {
+    "message": "Callback Url",
+    "description": "Table header for the callback column in the subscriptions table"
+  },
+  "subscriptions__comment": {
+    "message": "Comment",
+    "description": "Table header for the comment column in the subscriptions table"
+  },
+  "subscriptions__delete": {
+    "message": "Delete",
+    "description": "Table header for the delete column in the subscriptions table"
+  },
+  "subscriptions__no_subscriptions": {
+    "message": "No subscriptions",
+    "description": "Message displayed when there are no subscriptions"
+  }
+}

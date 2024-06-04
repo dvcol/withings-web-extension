@@ -1,24 +1,30 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import Router from 'svelte-spa-router';
+  import Router, { push } from 'svelte-spa-router';
 
+  import HeaderComponent from '~/components/header/HeaderComponent.svelte';
   import ProgressComponent from '~/components/progress/ProgressComponent.svelte';
-  import { routeDefinition } from '~/router/routes';
+  import { routeDefinition, RoutePath } from '~/router/routes';
   import { WithingsService } from '~/service/withings.service';
 
   import '~/styles/base.scss';
 
-  onMount(() => {
+  onMount(async () => {
     (window as any).WithingsService = WithingsService;
-    WithingsService.listen();
+    await WithingsService.listen();
+    if (!WithingsService.isAuthorized) return;
+    await push(RoutePath.Subscriptions);
   });
 </script>
 
 <main class="app-container">
   <ProgressComponent />
-  <section class="router-container">
-    <Router routes={routeDefinition} />
-  </section>
+  <article class="content-container">
+    <HeaderComponent />
+    <section class="router-container">
+      <Router routes={routeDefinition} />
+    </section>
+  </article>
 </main>
 
 <style lang="scss">
@@ -30,13 +36,20 @@
     align-items: center;
     justify-content: center;
 
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: calc(100vh - var(--loading-bar-height));
+      overflow-y: auto;
+    }
+
     .router-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-
-      height: calc(100vh - var(--loading-bar-height));
+      height: 100%;
     }
   }
 </style>

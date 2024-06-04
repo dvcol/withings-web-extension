@@ -1,0 +1,14 @@
+{
+  "header__subscribe": {
+    "message": "Subscribe",
+    "description": "Navbar header for subscribe route"
+  },
+  "header__subscriptions": {
+    "message": "Subscriptions",
+    "description": "Navbar header for subscriptions route"
+  },
+  "header__login": {
+    "message": "Login",
+    "description": "Navbar header for login route"
+  }
+}

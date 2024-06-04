@@ -12,5 +12,11 @@ module.exports = {
         '@typescript-eslint/consistent-type-imports': 'off',
       },
     },
+    {
+      files: ['*.svelte'],
+      rules: {
+        'prefer-const': 'off',
+      },
+    },
   ],
 };

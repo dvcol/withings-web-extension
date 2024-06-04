@@ -1,0 +1,26 @@
+{
+  "subscribe__callback": {
+    "message": "Callback Url",
+    "description": "The label for the callback url field"
+  },
+  "subscribe__callback__placeholder": {
+    "message": "Enter the callback url ...",
+    "description": "The placeholder for the callback url field"
+  },
+  "subscribe__comment": {
+    "message": "Comment",
+    "description": "The label for the comment field"
+  },
+  "subscribe__comment__placeholder": {
+    "message": "Withings-sleep notification ...",
+    "description": "The placeholder for the comment field"
+  },
+  "subscribe__appli": {
+    "message": "Appli Code",
+    "description": "The label for the appli code field"
+  },
+  "subscribe__subscribe": {
+    "message": "Subscribe",
+    "description": "The label for the subscribe button"
+  }
+}

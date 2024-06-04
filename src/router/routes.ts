@@ -7,14 +7,16 @@ import { WithingsService } from '~/service/withings.service';
 
 export const RouteName = {
   Login: 'login',
-  Notify: 'notify',
+  Subscribe: 'subscribe',
+  Subscriptions: 'subscriptions',
 } as const;
 
 export type RouteNames = (typeof RouteName)[keyof typeof RouteName];
 
 export const RoutePath: Record<keyof typeof RouteName, string> = {
   Login: `/${RouteName.Login}`,
-  Notify: `/${RouteName.Notify}`,
+  Subscribe: `/${RouteName.Subscribe}`,
+  Subscriptions: `/${RouteName.Subscriptions}`,
 };
 
 export type RouteData = {
@@ -39,6 +41,24 @@ export const Route: Record<
     component: WrappedComponent;
   }
 > = {
+  Subscriptions: {
+    name: RouteName.Subscriptions,
+    path: RoutePath.Subscriptions,
+    component: wrap({
+      asyncComponent: () => import('~/components/subscriptions/SubscriptionsComponent.svelte'),
+      conditions: [authGuard],
+      userData: { name: RouteName.Subscriptions } satisfies RouteData,
+    }),
+  },
+  Subscribe: {
+    name: RouteName.Subscribe,
+    path: RoutePath.Subscribe,
+    component: wrap({
+      asyncComponent: () => import('~/components/subscribe/SubscribeComponent.svelte'),
+      conditions: [authGuard],
+      userData: { name: RouteName.Subscribe } satisfies RouteData,
+    }),
+  },
   Login: {
     name: RouteName.Login,
     path: RoutePath.Login,
@@ -48,27 +68,19 @@ export const Route: Record<
       userData: { name: RouteName.Login } satisfies RouteData,
     }),
   },
-  Notify: {
-    name: RouteName.Notify,
-    path: RoutePath.Notify,
-    component: wrap({
-      asyncComponent: () => import('~/components/notify/NotifyComponent.svelte'),
-      conditions: [authGuard],
-      userData: { name: RouteName.Notify } satisfies RouteData,
-    }),
-  },
 } as const;
 
 export const routeMap = Object.values(Route).map(route => ({ name: route.name, path: route.path }));
 
 export const routeDefinition: RouteDefinition = {
   // Home
-  '/': Route.Notify.component,
+  '/': Route.Subscriptions.component,
 
   // Routes
-  [RoutePath.Notify]: Route.Notify.component,
+  [RoutePath.Subscriptions]: Route.Subscriptions.component,
+  [RoutePath.Subscribe]: Route.Subscribe.component,
   [RoutePath.Login]: Route.Login.component,
 
   // Catch-all
-  '*': Route.Notify.component,
+  '*': Route.Subscriptions.component,
 };

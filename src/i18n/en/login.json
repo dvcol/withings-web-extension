@@ -1,6 +1,26 @@
 {
-  "goodbye__title": {
-    "message": "Goodbye !",
-    "description": "Goodbye component placeholder text."
+  "login__logout": {
+    "message": "Logout",
+    "description": "Logout button"
+  },
+  "login__login": {
+    "message": "Login",
+    "description": "Login button"
+  },
+  "login__redirect": {
+    "message": "Redirect URI",
+    "description": "The label for the URI to redirect to after login"
+  },
+  "login__authorize": {
+    "message": "Authorize",
+    "description": "Authorize button"
+  },
+  "login__code": {
+    "message": "Code",
+    "description": "Code label for input"
+  },
+  "login__state": {
+    "message": "State",
+    "description": "CRSF State label for input"
   }
 }
