@@ -3,18 +3,17 @@ import { WithingsClient } from '@dvcol/withings-http-client';
 
 import { withingsApi } from '@dvcol/withings-http-client/api';
 
-import {
-  type AuthorizationRequest,
-  type WithingsApiResponse,
-  WithingsAuthToken,
-  type WithingsClientAuthentication,
-  type WithingsNotifyAppliCodes } from '@dvcol/withings-http-client/models';
-
+import { WithingsAuthToken } from '@dvcol/withings-http-client/models';
 import { derived, get, writable } from 'svelte/store';
 
 import type { CancellablePromise } from '@dvcol/base-http-client/utils/fetch';
 import type {
- WithingsNotify } from '@dvcol/withings-http-client/models';
+  AuthorizationRequest,
+  WithingsApiResponse,
+  WithingsClientAuthentication,
+  WithingsNotify,
+  WithingsNotifyAppliCodes,
+} from '@dvcol/withings-http-client/models';
 
 import { Constants } from '~/models/constants.model';
 import { LoadingBarService } from '~/service/loading-bar.service';

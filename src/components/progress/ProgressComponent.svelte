@@ -18,13 +18,44 @@
     --speed: var(--loading-bar-speed, 2s);
     --rail-color: transparent;
 
-    width: 100%;
-    left: 0;
-    top: 0;
     position: relative;
-    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: var(--height);
+    overflow: hidden;
     background-color: var(--rail-color);
+
+    .bar {
+      position: absolute;
+      height: var(--height);
+      opacity: 0;
+      transition: opacity 0.5s;
+      animation-duration: var(--speed);
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+
+      &.error {
+        width: 0;
+        background-color: red;
+      }
+
+      &.success {
+        width: 0;
+        background-color: var(--color-primary);
+      }
+
+      &.start {
+        background-color: var(--color-primary);
+        animation-name: loading-bar-grow;
+      }
+
+      &.end {
+        background-color: var(--color-secondary);
+        animation-name: loading-bar-shrink;
+        animation-delay: 0.9s;
+      }
+    }
 
     &.visible .bar {
       opacity: 1;
@@ -32,44 +63,16 @@
 
     &.error .bar.error {
       width: 100%;
-      transition: opacity 2s, width 1s;
+      transition:
+        opacity 2s,
+        width 1s;
     }
 
-    &:not(.error):not(.visible) .bar.success {
+    &:not(.error, .visible) .bar.success {
       width: 100%;
-      transition: opacity 2s, width 1s;
-    }
-
-    .bar {
-      position: absolute;
-      height: var(--height);
-      animation-duration: var(--speed);
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: infinite;
-
-      opacity: 0;
-      transition: opacity 0.5s;
-
-      &.error {
-        background-color: red;
-        width: 0;
-      }
-
-      &.success {
-        background-color: var(--color-primary);
-        width: 0;
-      }
-
-      &.start {
-        animation-name: loading-bar-grow;
-        background-color: var(--color-primary);
-      }
-
-      &.end {
-        animation-name: loading-bar-shrink;
-        animation-delay: 0.9s;
-        background-color: var(--color-secondary);
-      }
+      transition:
+        opacity 2s,
+        width 1s;
     }
   }
 
@@ -78,6 +81,7 @@
       left: -5%;
       width: 5%;
     }
+
     100% {
       left: 130%;
       width: 150%;
@@ -89,6 +93,7 @@
       left: -90%;
       width: 90%;
     }
+
     100% {
       left: 110%;
       width: 10%;
@@ -101,6 +106,7 @@
       width: 0;
       opacity: 0;
     }
+
     100% {
       left: 100%;
       width: 100%;

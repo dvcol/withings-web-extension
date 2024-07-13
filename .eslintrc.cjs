@@ -5,6 +5,9 @@ module.exports = {
   parserOptions: {
     project: ['./tsconfig.app.json', './tsconfig.vite.json', './tsconfig.vitest.json'],
   },
+  rules: {
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.*', '**/*.spec.*', '**/*.config.*', 'scripts/*.*'] }],
+  },
   overrides: [
     {
       files: ['*.json', '*.json5'],
